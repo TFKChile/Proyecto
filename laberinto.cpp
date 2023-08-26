@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <ctime>
 
 using namespace std;
@@ -22,7 +23,18 @@ void Laberinto(int Filas, int Columnas){
         }
         //iniciamos las entradas y salidas del laberinto
        Matriz[1][0] = 0;
+       Matriz[1][1] = 0;
        Matriz[Columnas - 2][Filas - 1] = 0;
+    }
+
+    //rellenamos el laberinto por dentro de manera aleatoria 
+
+    srand(time(0));
+    for (int i = 1; i < Filas - 1; i++) {
+        for (int j = 1; j < Columnas - 1; j++) {
+            // Generamos un número aleatorio entre 0 y 1
+            Matriz[i][j] = rand() % 2;
+        }
     }
 
     //mostramos el laberinto
@@ -40,6 +52,6 @@ void Laberinto(int Filas, int Columnas){
 	}
 }
 int main(){
-    Laberinto(10 , 10);
+    Laberinto(50 , 50);
     system("pause"); 
 }
